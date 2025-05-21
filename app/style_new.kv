@@ -1,0 +1,922 @@
+<AutismScreen>:
+    name: 'Autism'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Autisme"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "GCN"
+                values: ["GCN"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] L'autisme est un trouble du développement neurologique qui apparaît généralement dès la petite enfance. Il se manifeste par des difficultés dans la communication, des comportements répétitifs et une interaction sociale limitée. Les causes exactes de l'autisme sont encore mal comprises, mais des facteurs génétiques et environnementaux sont impliqués. Un accompagnement adapté permet d'améliorer la qualité de vie des personnes autistes.\n\n[b]Symptômes :[/b] Difficultés sociales, comportements répétitifs, troubles de la communication."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<AlzheimerScreen>:
+    name: 'Alzheimer'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Alzheimer"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "CNN"
+                values: ["CNN", "ViT"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] La maladie d'Alzheimer est une affection neurodégénérative progressive qui détruit lentement la mémoire et les compétences cognitives. Elle perturbe la capacité à effectuer les tâches quotidiennes. Cette maladie est la forme la plus courante de démence chez les personnes âgées. Les traitements actuels visent à ralentir la progression des symptômes et à améliorer la qualité de vie.\n\n[b]Symptômes :[/b] Perte de mémoire, confusion, troubles du langage, désorientation."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<BrainStrokeScreen>:
+    name: 'BrainStroke'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "AVC (Accident Vasculaire Cérébral)"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "CNN"
+                values: ["CNN"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] Un accident vasculaire cérébral (AVC) se produit lorsque l'irrigation sanguine du cerveau est interrompue, entraînant la mort des cellules cérébrales. Il peut être ischémique (obstruction d'une artère) ou hémorragique (rupture d'un vaisseau sanguin). L'AVC est une urgence médicale majeure. Une prise en charge rapide est essentielle pour limiter les séquelles.\n\n[b]Symptômes :[/b] Faiblesse d'un côté du corps, troubles de la parole, perte de conscience."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<MScreen>:
+    name: 'MS'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "SEP"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "CNN"
+                values: ["CNN", "U-Net"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] La sclérose en plaques (SEP) est une maladie auto-immune chronique qui affecte le système nerveux central. Elle est caractérisée par une attaque du système immunitaire contre la myéline, une substance qui protège les fibres nerveuses, entraînant des troubles neurologiques progressifs. Les symptômes varient selon les personnes et l'évolution est imprévisible.\n\n[b]Symptômes :[/b] Fatigue, troubles de la vision, engourdissements, problèmes de coordination."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<ParkinsonScreen>:
+    name: 'Parkinson'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Parkinson"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "VGG19"
+                values: ["VGG19"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] La maladie de Parkinson est une pathologie neurodégénérative affectant principalement les mouvements. Elle résulte de la perte progressive des cellules dopaminergiques dans le cerveau. Cette maladie évolue lentement et entraîne des troubles moteurs et non moteurs. Les traitements permettent de réduire les symptômes et d'améliorer la qualité de vie.\n\n[b]Symptômes :[/b] Tremblements, raideur, troubles de l'équilibre, lenteur des mouvements."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<BrainTumorScreen>:
+    name: 'BrainTumor'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Tumeur cérébrale"
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 40
+            spacing: 10
+            Label:
+                text: "Modèle :"
+                size_hint_x: 0.3
+                color: 0.1, 0.2, 0.5, 1
+            Spinner:
+                id: model_selector
+                text: "U-Net"
+                values: ["U-Net"]
+                size_hint_x: 0.7
+
+        ScrollView:
+            size_hint_y: None
+            height: self.parent.height * 0.18 if self.parent else 150
+            do_scroll_x: False
+            do_scroll_y: True
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 0
+                spacing: 0
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 1)
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: "[b]Définition :[/b] Une tumeur cérébrale est une masse de cellules anormales dans le cerveau. Elle peut être bénigne ou maligne, et selon sa localisation, elle peut affecter des fonctions vitales comme la parole, la vision, ou le contrôle moteur. Le traitement dépend du type et de la taille de la tumeur. Un diagnostic précoce et une prise en charge adaptée sont essentiels pour améliorer le pronostic.\n\n[b]Symptômes :[/b] Maux de tête, convulsions, troubles de la vision, changement de comportement."
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+        Button:
+            text: "Sélectionner une image"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.open_filechooser()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: None
+            height: 150
+
+        Button:
+            text: "Analyser"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.analyze_image()
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0, 0, 0, 1
+            font_size: '16sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "<- Retour au menu"
+            size_hint: None, None
+            size: 200, 50
+            pos_hint: {'center_x': 0.5}
+            background_color: (0.6, 0.7, 0.9, 1)
+            font_size: '16sp'
+            on_release: root.manager.current = 'menu'
+
+<RoundButton@Button>:
+    background_normal: ''
+    background_color: 0.7, 0.8, 0.9, 1
+    color: 0.2, 0.2, 0.2, 1
+    canvas.before:
+        Color:
+            rgba: self.background_color
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [20,]
+
+<MainMenu>:
+    AnchorLayout:
+        anchor_y: 'top'
+        padding: 20
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: None, None
+            width: min(self.parent.width, 1100) if self.parent else 1100
+            height: self.minimum_height
+            spacing: 30
+
+            Label:
+                text: 'Analyseur Cérébral'
+                font_size: '40sp'
+                bold: True
+                color: 0.2, 0.2, 0.2, 1
+                size_hint_y: None
+                height: '80dp'
+                text_size: self.size
+                halign: 'center'
+                valign: 'middle'
+
+            Image:
+                source: 'brain_logo.png'
+                size_hint_y: None
+                height: '180dp'
+                allow_stretch: True
+                keep_ratio: True
+
+            GridLayout:
+                cols: 3
+                spacing: 30
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 20
+
+                RoundButton:
+                    text: 'Autisme'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'autism'
+                RoundButton:
+                    text: 'Alzheimer'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'alzheimer'
+                RoundButton:
+                    text: 'AVC'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'brain_stroke'
+                RoundButton:
+                    text: 'SEP'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'ms'
+                RoundButton:
+                    text: 'Parkinson'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'parkinson'
+                RoundButton:
+                    text: 'Tumeur cérébrale'
+                    size_hint_y: None
+                    height: '80dp'
+                    font_size: '22sp'
+                    on_press: root.manager.current = 'brain_tumor'
+
+<DiseaseScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '40dp'
+
+            RoundButton:
+                text: '← Retour au menu'
+                size_hint_x: 0.3
+                on_press: root.manager.current = 'menu'
+
+            Label:
+                id: disease_title
+                text: ''
+                font_size: '24sp'
+                bold: True
+                color: 0.2, 0.2, 0.2, 1
+                halign: 'center'
+                valign: 'middle'
+                size_hint_x: 0.7
+                text_size: self.size
+
+        ScrollView:
+            size_hint_y: 0.25
+
+            Label:
+                id: disease_info
+                text: ''
+                color: 0.2, 0.2, 0.2, 1
+                font_size: '16sp'
+                size_hint_y: None
+                height: self.texture_size[1]
+                text_size: self.width, None
+                markup: True
+
+        BoxLayout:
+            size_hint_y: None
+            height: '50dp'
+            spacing: 20
+
+            RoundButton:
+                text: 'Sélectionner une image'
+                on_press: root.open_filechooser()
+
+            RoundButton:
+                text: 'Analyser'
+                on_press: root.analyze_image()
+
+        Image:
+            id: uploaded_image
+            source: ''
+            size_hint_y: 0.4
+            allow_stretch: True
+            keep_ratio: True
+
+        Label:
+            id: result_label
+            text: ''
+            color: 0.2, 0.2, 0.2, 1
+            font_size: '18sp'
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: self.width, None
+
+<DiseaseBaseScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [20, 20, 20, 20]
+        spacing: 20
+        canvas.before:
+            Color:
+                rgba: (0.85, 0.92, 1, 1)
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # 1. Title at the very top
+        Label:
+            text: root.name.capitalize()
+            font_size: '28sp'
+            bold: True
+            color: 0, 0, 0, 1
+            size_hint_y: None
+            height: 50
+
+        # 2. Info row (definition/symptoms and model explanation + selector)
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: 150  # slightly increased to fit selector
+            spacing: 20
+
+            # Left: Definitions/Symptoms (scrollable)
+            ScrollView:
+                size_hint_x: 0.65
+                do_scroll_x: False
+                do_scroll_y: True
+                bar_width: 8
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 0.7)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+                Label:
+                    id: disease_info
+                    text: ''
+                    markup: True
+                    font_size: '16sp'
+                    color: 0, 0, 0, 1
+                    text_size: self.width-20, None
+                    halign: 'left'
+                    valign: 'top'
+                    size_hint_y: None
+                    height: self.texture_size[1]
+
+            # Right: Model Selector + Model Explanation (vertical)
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_x: 0.35
+                spacing: 5
+                padding: [0, 5, 0, 5]
+                canvas.before:
+                    Color:
+                        rgba: (0.8, 0.9, 1, 0.7)
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [10,]
+                # Model selector (compact)
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 28
+                    spacing: 5
+                    Label:
+                        text: "Modèle :"
+                        font_size: '14sp'
+                        size_hint_x: 0.45
+                        color: 0.1, 0.2, 0.5, 1
+                        halign: 'right'
+                        valign: 'middle'
+                        text_size: self.size
+                    Spinner:
+                        id: model_selector
+                        font_size: '14sp'
+                        size_hint_x: 0.55
+                        text: 'GCN' if root.name == 'autism' else ('U-Net' if root.name == 'brain_tumor' else 'CNN')
+                        values: ['GCN', 'CNN'] if root.name == 'autism' else (['CNN', 'ViT'] if root.name == 'alzheimer' else ['CNN', 'UNet'] if root.name == 'ms' else ['U-Net', 'CNN'] if root.name == 'brain_tumor' else ['VGG19'] if root.name == 'parkinson' else ['CNN'])
+                # Model explanation (scrollable)
+                ScrollView:
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    bar_width: 8
+                    Label:
+                        id: model_explanation
+                        text: ''
+                        font_size: '15sp'
+                        color: 0, 0, 0, 1
+                        text_size: self.width-20, None
+                        halign: 'left'
+                        valign: 'top'
+                        size_hint_y: None
+                        height: self.texture_size[1]
+
+        # 3. The rest of the widgets in a vertical BoxLayout that expands
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: 1
+            spacing: 10
+
+            Button:
+                text: "Sélectionner une image"
+                size_hint: None, None
+                size: 200, 50
+                pos_hint: {'center_x': 0.5}
+                background_color: (0.6, 0.7, 0.9, 1)
+                font_size: '16sp'
+                on_release: root.open_filechooser()
+
+            Image:
+                id: uploaded_image
+                source: ''
+                size_hint_y: None
+                height: 150
+
+            Button:
+                text: "Analyser"
+                size_hint: None, None
+                size: 200, 50
+                pos_hint: {'center_x': 0.5}
+                background_color: (0.6, 0.7, 0.9, 1)
+                font_size: '16sp'
+                on_release: root.analyze_image()
+
+            Label:
+                id: result_label
+                text: ''
+                color: 0, 0, 0, 1
+                font_size: '16sp'
+                size_hint_y: None
+                height: 40
+
+            Button:
+                text: "<- Retour au menu"
+                size_hint: None, None
+                size: 200, 50
+                pos_hint: {'center_x': 0.5}
+                background_color: (0.6, 0.7, 0.9, 1)
+                font_size: '16sp'
+                on_release: root.manager.current = 'menu' 
